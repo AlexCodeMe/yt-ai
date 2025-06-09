@@ -2,7 +2,7 @@ import { ResponsiveDialog } from "@/components/responsive-dialog";
 import { Button } from "@/components/ui/button";
 import { JSX, useState } from "react";
 
-export function UseConfirm(
+export function useConfirm(
   title: string,
   description: string
 ): [() => JSX.Element, () => Promise<unknown>] {
