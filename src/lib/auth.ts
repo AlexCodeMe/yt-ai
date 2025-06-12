@@ -1,14 +1,29 @@
-import { betterAuth } from "better-auth";
-import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { betterAuth } from 'better-auth'
+import { drizzleAdapter } from 'better-auth/adapters/drizzle'
+import { polar, checkout, portal } from '@polar-sh/better-auth'
 
-import { db } from "@/db";
-import * as schema from "@/db/schema";
+import { db } from '@/db'
+import * as schema from '@/db/schema'
+import { polarClient } from './polar'
 
-if (process.env.NODE_ENV === "development") {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+if (process.env.NODE_ENV === 'development') {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 }
 
 export const auth = betterAuth({
+  plugins: [
+    polar({
+      client: polarClient,
+      createCustomerOnSignUp: true,
+      use: [
+        checkout({
+          authenticatedUsersOnly: true,
+          successUrl: '/upgrade',
+        }),
+        portal(),
+      ],
+    }),
+  ],
   socialProviders: {
     github: {
       clientId: process.env.GITHUB_CLIENT_ID as string,
@@ -23,9 +38,9 @@ export const auth = betterAuth({
     enabled: true,
   },
   database: drizzleAdapter(db, {
-    provider: "pg", // or "mysql", "sqlite",
+    provider: 'pg', // or "mysql", "sqlite",
     schema: {
       ...schema,
     },
   }),
-});
+})
