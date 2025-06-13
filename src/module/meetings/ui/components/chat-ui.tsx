@@ -11,7 +11,6 @@ import {
   Thread,
   Window,
 } from 'stream-chat-react'
-import { ErrorState } from '@/components/error-state'
 
 import 'stream-chat-react/dist/css/v2/index.css'
 import { LoadingState } from '@/components/loading-state'

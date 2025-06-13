@@ -10,7 +10,6 @@ import {
 } from '@tanstack/react-query'
 import { MeetingIdViewHeader } from '../components/meeting-id-view-header'
 import { useRouter } from 'next/navigation'
-import { toast } from 'sonner'
 import { useConfirm } from '@/module/agents/hooks/use-confirm'
 import { UpdateMeetingDialog } from '../components/update-meeting-dialog'
 import { useState } from 'react'
@@ -44,7 +43,7 @@ export function MeetingIdView({ meetingId }: MeetingIdViewProps) {
     trpc.meetings.remove.mutationOptions({
       onSuccess: () => {
         queryClient.invalidateQueries(trpc.meetings.getMany.queryOptions({}))
-        // todo: invalidate free tier usage
+
         router.push('/meetings')
       },
     })
@@ -86,6 +85,7 @@ export function MeetingIdView({ meetingId }: MeetingIdViewProps) {
         {isUpcoming && (
           <UpcomingState
             meetingId={meetingId}
+            // todo
             onCancelMeeting={() => {}}
             isCancelling={false}
           />

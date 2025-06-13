@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import {
   ChevronRightIcon,
-  MoreVertical,
   MoreVerticalIcon,
   PencilIcon,
   TrashIcon,

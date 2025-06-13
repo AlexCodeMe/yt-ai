@@ -4,7 +4,6 @@ import {
   parseAsStringEnum,
   useQueryStates,
 } from "nuqs";
-import { filterSearchParams } from "../params";
 import { DEFAULT_PAGE } from "@/constants";
 import { MeetingStatus } from "../types";
 

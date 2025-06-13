@@ -7,9 +7,7 @@ import { useTRPC } from '@/trpc/client'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { PricingCard } from '../component/pricing-card'
 
-interface UpgradeViewProps {}
-
-export function UpgradeView({}: UpgradeViewProps) {
+export function UpgradeView() {
   const trpc = useTRPC()
   const { data: products } = useSuspenseQuery(
     trpc.premium.getProducts.queryOptions()

@@ -9,7 +9,6 @@ import { columns } from "../components/columns";
 import { EmptyState } from "@/components/empty-state";
 import { useMeetingsFilters } from "../../hooks/use-meetings-filters";
 import { DataPagination } from "@/components/data-pagination";
-import { Router } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export function MeetingsView() {
